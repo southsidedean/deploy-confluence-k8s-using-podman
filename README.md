@@ -1,27 +1,30 @@
-# Deploying a Confluence Server in Kubernetes Using a Podman-Generated YAML Manifest
-**Tom Dean - 3/23/2023**
+## Deploying a Confluence Server in Kubernetes Using a Podman-Generated YAML Manifest
+
+### Tom Dean: [LinkedIn](https://www.linkedin.com/in/tomdeanjr/) / [GitHub](https://github.com/southsidedean)
 
 ## Introduction
 
-A couple of weeks back, in a previous article, [Deploying a Kubernetes-In-Docker (KIND) Cluster Using Podman on Ubuntu Linux](https://www.linkedin.com/pulse/deploying-kubernetes-in-docker-kind-cluster-using-podman-tom-dean-1c/), we took a look at how to use Podman to deploy a Kubernetes cluster as a KIND container.
+In a previous tutorial, [Deploying a Kubernetes-In-Docker (KIND) Cluster Using Podman on Ubuntu Linux](https://github.com/southsidedean/deploy-kind-using-podman-ubuntu), we took a look at how to use Podman to deploy a KIND container.
 
-Recently, I was discussing what a good use case might be for an article on deploying an application in a Podman Pod with my friend Jeff Kaleth, and he suggested Atlassian Confluence, as he does quite a bit of work documenting things with it.  Confluence tends to be consumed as SaaS these days, but sometimes you might want to run a local instance.
+While discussing good use cases for an article on deploying an application in a Podman Pod with my friend Jeff Kaleth, he suggested Atlassian Confluence, as he does quite a bit of work documenting things with it.  Confluence tends to be consumed as SaaS these days, but sometimes you might want to run a local instance.
 
 Traditionally, this would mean installing software either on a bare metal server or virtual machine, on top of an operating system.  This would be messy, and take time and effort to get everything configured properly.  Yuck!
 
 *There has to be a better way.  There is!*
 
-In my previous article, [Using Podman to Generate and Test a Kubernetes YAML Manifest](https://www.linkedin.com/pulse/using-podman-generate-test-kubernetes-yaml-manifest-tom-dean/), we took a look at how we can use Podman to deploy a Confluence server, with a Postgres database, in a pod, and then create a YAML manifest, using the `podman generate kube` command.  We then used Podman to test our YAML manifest.
+In a previous tutorial, [Using Podman to Generate and Test a Kubernetes YAML Manifest](https://github.com/southsidedean/using-podman-generate-test-k8s-manifest), we took a look at how we can use Podman to deploy a Confluence server, with a Postgres database, in a pod, and then create a YAML manifest, using the `podman generate kube` command.  We then used Podman to test our YAML manifest.
 
 In this tutorial, I'm going to show you how to deploy the YAML manifest for our Confluence server pod in Kubernetes.  We're going to deploy (*and debug*) our manifest to get it working on a KIND, or Kubernetes-In-Docker, cluster.
 
 ## References
 
-[Using Podman to Generate and Test a Kubernetes YAML Manifest](https://www.linkedin.com/pulse/using-podman-generate-test-kubernetes-yaml-manifest-tom-dean/)
+[GitHub: Deploying a Confluence Server in Kubernetes Using a Podman-Generated YAML Manifest](https://github.com/southsidedean/deploy-confluence-k8s-using-podman)
 
-[Deploying a Confluence Server in a Podman Pod Using Containers](https://www.linkedin.com/pulse/deploying-confluence-server-podman-pod-using-containers-tom-dean/)
+[GitHub: Using Podman to Generate and Test a Kubernetes YAML Manifest](https://github.com/southsidedean/using-podman-generate-test-k8s-manifest)
 
-[Deploying a Kubernetes-In-Docker (KIND) Cluster Using Podman on Ubuntu Linux](https://www.linkedin.com/pulse/deploying-kubernetes-in-docker-kind-cluster-using-podman-tom-dean-1c/)
+[GitHub: Deploying a Confluence Server in a Podman Pod Using Containers](https://github.com/southsidedean/deploy-confluence-podman-pod)
+
+[GitHub: Deploying a Kubernetes-In-Docker (KIND) Cluster Using Podman on Ubuntu Linux](https://github.com/southsidedean/deploy-kind-using-podman-ubuntu)
 
 [KIND: Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/)
 
@@ -31,11 +34,11 @@ In this tutorial, I'm going to show you how to deploy the YAML manifest for our 
 
 ## Prerequisites
 
-You will need an x64 Linux instance (physical or virtual) to deploy the Confluence container we will be using.  You're also going to need Podman installed and configured on your Linux instance.  If you need to accomplish this, see the [Deploying a Kubernetes-In-Docker (KIND) Cluster Using Podman on Ubuntu Linux](https://www.linkedin.com/pulse/deploying-kubernetes-in-docker-kind-cluster-using-podman-tom-dean-1c/) article above.
+You will need an x64 Linux instance (physical or virtual) to deploy the Confluence container we will be using.  You're also going to need Podman installed and configured on your Linux instance.  If you need to accomplish this, see the [Deploying a Kubernetes-In-Docker (KIND) Cluster Using Podman on Ubuntu Linux](https://github.com/southsidedean/deploy-kind-using-podman-ubuntu) article.
 
-You're also going to need the YAML manifest we created in the [Using Podman to Generate and Test a Kubernetes YAML Manifest](https://www.linkedin.com/pulse/using-podman-generate-test-kubernetes-yaml-manifest-tom-dean/) article.  If you haven't generated the YAML manifest, head over to that article and do it!
+You're also going to need the YAML manifest we created in the [Using Podman to Generate and Test a Kubernetes YAML Manifest](https://github.com/southsidedean/using-podman-generate-test-k8s-manifest) tutorial.  If you haven't generated the YAML manifest, head over to that article and do it!
 
-Finally, you're going to need a Kubernetes-In-Docker, or KIND cluster.  If you have another Kubernetes cluster to deploy to, you can use that.  If you need to prepare your host to deploy a KIND cluster, this is also covered in the [Deploying a Kubernetes-In-Docker (KIND) Cluster Using Podman on Ubuntu Linux](https://www.linkedin.com/pulse/deploying-kubernetes-in-docker-kind-cluster-using-podman-tom-dean-1c/) article.
+Finally, you're going to need a Kubernetes-In-Docker, or KIND cluster.  If you have another Kubernetes cluster to deploy to, you can use that.  If you need to prepare your host to deploy a KIND cluster, this is also covered in the [Deploying a Kubernetes-In-Docker (KIND) Cluster Using Podman on Ubuntu Linux](https://github.com/southsidedean/deploy-kind-using-podman-ubuntu) tutorial.
 
 ## Deploying a Kubernetes-In-Docker (KIND) Cluster
 
@@ -718,7 +721,7 @@ No kind clusters found.
 
 We're all cleaned up.
 
-***With a little tweaking and troubleshooting, we were able to deploy our confluence pod pod in Kubernetes.  How cool is that?***
+***With a little tweaking and troubleshooting, we deployed our confluence pod pod in Kubernetes.  How cool is that?***
 
 ## Summary
 
